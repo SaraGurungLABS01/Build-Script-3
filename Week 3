@@ -1,0 +1,91 @@
+#!/bin/bash
+
+while true; do
+    clear
+    echo "System Information Menu:"
+    echo "1. Currently logged users"
+    echo "2. Your shell directory"
+    echo "3. Home Directory"
+    echo "4. OS name & version"
+    echo "5. Current working directory"
+    echo "6. Number of users logged in"
+    echo "7. Hard disk information"
+    echo "8. CPU information"
+    echo "9. Memory information"
+    echo "10. File system information"
+    echo "11. Currently running processes"
+    echo "12. Exit"
+
+    read -p "Enter your choice (1-12): " choice
+
+   case $choice in
+        1)
+            # This option displays currently logged-in users.
+            who
+            ;;
+
+        2)
+            # This option displays the user's shell directory.
+            echo "Your shell directory: $SHELL"
+            ;;
+
+        3)
+            # This option displays the user's home directory.
+            echo "Home Directory: $HOME"
+            ;;
+
+        4)
+            # This option displays the OS name and version.
+            echo "OS Name & Version: $(uname -a)"
+            ;;
+
+        5)
+            # This option displays the current working directory.
+            echo "Current Working Directory: $(pwd)"
+            ;;
+
+        6)
+            # This option displays the number of users logged in.
+            echo "Number of Users Logged In: $(who | wc -l)"
+            ;;
+
+        7)
+            # This option displays hard disk information.
+            df -h
+            ;;
+
+        8)
+            # This option displays CPU information.
+            lscpu
+            ;;
+
+        9)
+            # This option displays memory information.
+            free -h
+            ;;
+
+        10)
+            # This option displays file system information.
+            df -T
+            ;;
+
+        11)
+            # This option displays currently running processes.
+            ps aux
+            ;;
+
+        12)
+            # This option exits the script.
+            break
+            ;;
+
+        *)
+            # This handles invalid options.
+            echo "Invalid option. Please choose a valid option."
+            ;;
+    esac
+# This marks the end of the case statement.
+
+    read -p "Press Enter to continue..."
+   
+done
